@@ -21,6 +21,7 @@ public class MemberController {
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
 
+
     @GetMapping(value = "/new")
     public String memberForm(Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
@@ -30,6 +31,8 @@ public class MemberController {
     @PostMapping(value = "/new")
     public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
 
+        System.out.println("email" + memberFormDto.getEmail());
+        System.out.println("name" + memberFormDto.getName());
         if(bindingResult.hasErrors()){
             return "member/memberForm";
         }
