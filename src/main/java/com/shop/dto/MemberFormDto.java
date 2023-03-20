@@ -15,11 +15,11 @@ public class MemberFormDto {
     @NotBlank(message = "名前は必須です")
     private String name;
 
-    @NotBlank(message = "E-mailは必須です")
+    @NotEmpty(message = "E-mailは必須です")
     @Email(message = "E-mailの形式で入力してください")
     private String email;
 
-    @NotBlank(message = "パスワードは必須です")
+    @NotEmpty(message = "パスワードは必須です")
     @Length(min=8, max =16,message="パスワードは８字以上、１６字以下で入力してください")
     private String password;
 
