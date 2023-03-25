@@ -37,8 +37,8 @@ public class SecurityConfig {
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher
-                        ("/member/logout")) //ログアウトのURL
-                .logoutSuccessUrl("/");             //ログアウトの成功tの時移動するURL
+                        ("/members/logout"))             //ログアウトのURL
+                .logoutSuccessUrl("/");             //ログアウトの成功の時移動するURL
 
 
         http.authorizeRequests()    //security処理にhttpServletRequestを利用する意味
@@ -70,3 +70,4 @@ public class SecurityConfig {
 
 
 }
+

@@ -1,13 +1,12 @@
-html{
+html {
     position: relative;
     min-height: 100%;
     margin: 0;
 }
-
-body{
+body {
     min-height: 100%;
 }
-.footer{
+.footer {
     position: absolute;
     left: 0;
     right: 0;
