@@ -25,4 +25,19 @@ public class CartItem extends BaseEntity{
 
     private int count;
 
+    public static CartItem createCartItem(Cart cart, Item item, int count){
+        CartItem cartItem = new CartItem();
+        cartItem.setCart(cart);
+        cartItem.setItem(item);
+        cartItem.setCount(count);
+        return cartItem;
+    }
+
+    public void addCount(int count){    //Cartに入れている商品に追加された時数量を加える
+        this.count += count;
+    }
+
+    public void updateCount(int count){
+        this.count = count;
+    }
 }

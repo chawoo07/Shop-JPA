@@ -91,7 +91,7 @@
         dataType : "json",
         cache   : false,
         success  : function(result, status){
-          alert("商品をカゴに追加しました。");
+          alert("商品をカートに入れました。");
           location.href='/';
         },
         error : function(jqXHR, status, error){
@@ -163,7 +163,7 @@
         </div>
         <div class="input-group w-50">
           <div class="input-group-prepend">
-            <span class="input-group-text">数</span>
+            <span class="input-group-text">個</span>
           </div>
           <input type="number" name="count" id="count" class="form-control" value="1" min="1">
         </div>

@@ -3,6 +3,7 @@ package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
 import com.shop.dto.ItemFormDto;
+import com.shop.exception.OutOfStockException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,8 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="item")
-@Getter
-@Setter
+@Getter @Setter
 @ToString
 public class Item extends BaseEntity{
 
@@ -43,6 +43,18 @@ public class Item extends BaseEntity{
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
+
+    public void removeStock(int stockNumber){
+        int restStock = this.stockNumber - stockNumber;     //残りの在庫
+        if(restStock<0){
+            throw new OutOfStockException("商品の在庫がないです。　(現在在庫数： " + this.stockNumber + ")"); //例外
+        }
+        this.stockNumber = restStock;                       //注文の後、残りの在庫の数をアップデート
+    }
+
+    public void addStock(int stockNumber){
+        this.stockNumber += stockNumber;
     }
 
 }

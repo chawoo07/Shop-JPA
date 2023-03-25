@@ -36,8 +36,36 @@ public class Order extends BaseEntity{
     private List<OrderItem> orderItems = new ArrayList<>();
     //一つの注文が幾つの注文商品を持つのでListを使ってマッピング
 
+    public void addOrderItem(OrderItem orderItem){  //orderItemsに注文の情報を与える orderオブジェクトのorderItemsに追加
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
 
+    public static Order createOrder(Member member, List<OrderItem> orderItemList){
+        Order order = new Order();
+        order.setMember(member);                    //注文した会員の情報をセットする
+        for(OrderItem orderItem : orderItemList){
+            order.addOrderItem(orderItem);
+        }
+        order.setOrderStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());    //現在時間を注文時間に
+        return order;
+    }
 
+    public int getTotalPrice(){                     //総額
+        int totalPrice = 0;
+        for(OrderItem orderItem : orderItems){
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
 
+    public void cancelOrder(){
+        this.orderStatus = OrderStatus.CANCEL;
+
+        for(OrderItem orderItem : orderItems){
+            orderItem.cancel();
+        }
+    }
 
 }

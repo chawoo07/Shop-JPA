@@ -13,6 +13,7 @@ import javax.persistence.*;
 @ToString
 public class Cart extends BaseEntity{
 
+
     @Id
     @Column(name = "cart_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +23,9 @@ public class Cart extends BaseEntity{
     @JoinColumn(name="member_id")   //マッピングする外来キーを設定、JPAが自動でIDを探すけどかロム名が望むとおり生成されないかもしれないから直接指定
     private Member member;
 
+    public static Cart createCart(Member member){
+        Cart cart = new Cart();
+        cart.setMember(member);
+        return cart;
+    }
 }
