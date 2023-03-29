@@ -175,7 +175,7 @@
         <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
       </div>
       <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
-        <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">商品をかごに追加</button>
+        <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">商品をカートに追加</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="order()">注文</button>
       </div>
       <div th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
